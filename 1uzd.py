@@ -16,6 +16,9 @@ def author_sort(elem):
 def name_length_sort(elem):
     return(len(elem["name"]))
 
+def key_sort(elem):
+    return(elem.items())
+
 
 
 
@@ -26,9 +29,9 @@ def longest_name(x):
     return(y[0])
 
 
-dati.sort(key=year_sort,reverse=True)
+dati.sort(key=year_sort)
 oldest_book = dati[0]
-print(oldest_book["name"])
+print("oldestbook:",oldest_book["name"])
 
 
 total_price = 0
@@ -42,8 +45,17 @@ print(average_price)
 
 longest_name_book = longest_name(dati) 
 print(longest_name_book["author"]+",",longest_name_book["year_published"])
-
+authors = {}
 dati_copy = dati
 for data in dati_copy:
     if data["author"] == "":
         data["author"] = "Nav norādīts"
+    
+    if data["author"] not in authors:
+        authors[data["author"]] = 1
+
+    else:
+        authors[data["author"]] += 1
+
+
+print(authors)
