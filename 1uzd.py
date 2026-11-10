@@ -57,5 +57,5 @@ for data in dati_copy:
     else:
         authors[data["author"]] += 1
 
-
+authors = {k: v for k, v in sorted(authors.items(), key=lambda item: item[0])}
 print(authors)
